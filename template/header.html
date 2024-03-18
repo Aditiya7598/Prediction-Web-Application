@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIPREKESWA | Dashboard </title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css') }}">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/jqvmap/jqvmap.min.css') }}">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/adminlte.min.css') }}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='plugins/daterangepicker/daterangepicker.css') }}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+
+
+<!-- Navbar -->
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <!-- Left navbar links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+    </li>
+  </ul>
+
+
+  <!-- Right navbar links -->
+  <ul class="navbar-nav ml-auto">
+
+    <!-- tools Menu -->
+    <li class="nav-item">
+      <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+        <i class="fas fa-expand-arrows-alt"></i>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+        <i class="fas fa-th-large"></i>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a href="{{ url_for('logout') }}" class="navbar btn btn-danger btn-sm"  role="button">Log Out</a>
+    </li>
+
+  </ul>
+</nav>
+<!-- /.navbar -->
+
+
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="index3.html" class="brand-link">
+    <img src="static/dist/img/logogelap.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">PREDIKSI</span>
+  </a>
+
+
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+  {% block body %}
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+        <li class="nav-item ">
+          <a href="dashboard" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+        
+
+        <!-- Sidebar Menu Forms -->
+        {% if session.level == 'Administrator' %}
+        
+        <li class="nav-item {% if menu=='inputdata' %} menu-open {% endif %}">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-edit"></i>
+            <p>Input Data Mahasiswa
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/alumnimahasiswa" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Alumni Mahasiswa</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/mahasiswaaktif" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Data Mahasiswa Aktif</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-header">Data mining</li>
+
+        <li class="nav-item">
+          <a href="/modeltrainingdata" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+            <p>Trainng Data (Model)</p>
+          </a>
+        </li>
+
+
+        <li class="nav-item">
+          <a href="/halaman_prediksi" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+            <p>Prediksi Lama Studi</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/algoritmaPrediksi" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
+            <p>Algoritma Prediksi</p>
+          </a>
+        </li>
+        
+        <li class="nav-header">Input Data User</li>
+        <li class="nav-item">
+          <a href="/datauser" class="nav-link">
+            <i class="nav-icon far fa-plus-square"></i>
+            <p>Data User login</p>
+          </a>
+        </li>
+
+        <li class="nav-header">Pengaturan Akun</li>
+        <li class="nav-item">
+          <a href="/profile" class="nav-link">
+            <i class="nav-icon far fa-image"></i>
+              <p>Profile User</p>
+          </a>
+        </li>
+
+
+
+        {% elif session.level == 'Dosen (Lecturer)' %}
+        
+        <li class="nav-header">Data Mahasiswa
+          <li class="nav-item">
+            <a href="/alumnimahasiswa_DD" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>Data Alumni Mahasiswa</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/mahasiswaaktif_DD" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>Data Mahasiswa Aktif</p>
+            </a>
+          </li>     
+          <li class="nav-item">
+            <a href="/data_prediksi_DD" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>Data Prediksi Mahasiswa Aktif</p>
+            </a>
+          </li> 
+        </li>
+
+        <li class="nav-header">Algoritma Prediksi
+        <li class="nav-item">
+            <a href="/algoritmaPrediksi_DD" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>Algoritma Prediksi</p>
+            </a>
+        </li>
+
+        <li class="nav-header">Pengaturan Akun</li>
+        <li class="nav-item">
+          <a href="/profile" class="nav-link">
+            <i class="nav-icon far fa-image"></i>
+              <p>Profile User</p>
+          </a>
+        </li>
+
+      {% endif %}
+
+      {% endblock %}
+
+
+
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

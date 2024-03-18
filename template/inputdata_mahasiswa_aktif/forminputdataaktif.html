@@ -1,0 +1,276 @@
+{% include 'header.html' %}
+       
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="/mahasiswaaktif">Data Mahasiswa Aktif</a></li>
+              <li class="breadcrumb-item active">Input Data mahasiswa Aktif</li>
+            </ol>
+          </div>
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content (isi content) -->
+    <section class="content">
+      <div class="container-fluid">
+        
+        <!-- isi -->
+        <div class="row">
+          <div class="col-md-12">     <!-- untuk melebarkan tampilan tabel -->
+        
+            <!-- general form elements -->
+              <div class="modal-content">
+                 <div class="modal-header">
+                   <h4 class="modal-title">Tambah data</h4>
+                 </div>
+                 <div class="modal-body">
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card-body">
+                <form action="/add_dataaktif" method="POST">
+                  <div class="row">
+                    
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="nama">Nama</label>
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="nim">NIM</label>
+                        <input type="text" class="form-control" id="nim" name="nim" placeholder="NIM">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="fakultas">Fakultas</label>
+                        <select class="form-control" id="fakultas" name="fakultas">   <!-- <select> disini suatu perintah digunakan untuk memilih inputan -->
+                          <option selected disabled>Pilih Fakultas</option>
+                          <option>FBS </option>
+                          <option>FE</option>
+                          <option>FH</option>
+                          <option>FIK</option>
+                          <option>FIP</option>
+                          <option>FIS</option>
+                          <option>FT</option>
+                          <option>FMIPA</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="program_sudi">Program Studi</label>
+                        <select class="form-control" id="program_studi" name="program_studi">   <!-- <select> disini suatu perintah digunakan untuk memilih inputan -->
+                          <option selected disabled>Pilih Program Studi</option>
+                          <option>Teknologi Pendidikan</option>
+                          <option>Pendidikan Luar Sekolah</option>
+                          <option>Bimbingan dan Konseling</option>
+                          <option>Pendidikan Guru Sekolah Dasar</option>
+                          <option>Pendidikan Guru PAUD</option>
+                          <option>Psikologi</option>
+                          <option>Pendidikan Bahasa dan Sastra Indonesia</option>
+                          <option>Sastra Indonesia</option>
+                          <option>Pendidikan Bahasa Inggris</option>
+                          <option>Sastra Inggris</option>
+                          <option>Pendidikan Bahasa Perancis</option>
+                          <option>Pendidikan Bahasa Jepang</option>
+                          <option>Pendidikan Bahasa Arab</option>
+                          <option>Pendidikan Bahasa Mandarin</option>
+                          <option>sastra Perancis</option>
+                          <option>Pendidikan Seni Rupa</option>                        
+                          <option>Seni Rupa</option>
+                          <option>Desain Komunikasi Visual (DKV)</option>
+                          <option>Sendratasik - Pendidikan Seni Tari</option>
+                          <option>Sendratasik - Pendidikan Seni Musik</option>
+                          <option>Pendidikan Bahasa dan Sastra Jawa</option>
+                          <option>Sastra Jawa</option>
+                          <option>Pendidikan Sejarah</option>                        
+                          <option>Ilmu Sejarah</option>
+                          <option>Pendidikan Geografi</option>
+                          <option>Geografi</option>
+                          <option>Pendidikan Pancasila dan Kewarganegaraan</option>
+                          <option>Ilmu Politik</option>
+                          <option>Pendidikan Sosiologi dan Antropologi</option>
+                          <option>Pendidikan Ilmu Pengetahuan Sosial</option>
+                          <option>Pendidikan Matematika</option>                        
+                          <option>Matematika</option>
+                          <option>Pendidikan Fisika</option>
+                          <option>Fisika</option>
+                          <option>Pendidikan Kimia</option>
+                          <option>Kimia</option>
+                          <option>Pendidikan Biologi</option>
+                          <option>Biologi</option>
+                          <option>Pendidikan Ilmu Pengetahuan Alam</option>
+                          <option>Teknik Informatika</option>
+                          <option>Pendidikan Teknik Bangunan</option>
+                          <option>Teknik Sipil</option>
+                          <option>Teknik Arsitektur</option>
+                          <option>Pendidikan Teknik Mesin</option>
+                          <option>Pendidikan Teknik Otomotif</option>
+                          <option>Teknik Mesin</option>
+                          <option>Pendidikan Teknik Elektro</option>
+                          <option>Pendidikan Teknik Informatika dan Komputer</option>
+                          <option>Pendidikan Kesejahteraan Keluarga</option>
+                          <option>Pendidikan Tata Kecantikan</option>
+                          <option>Pendidikan Tata Busana</option>
+                          <option>Pendidikan Tata Boga</option>
+                          <option>Teknik Kimia</option>
+                          <option>Pendidikan Jasmani, Kesehatan dan Rekreasi</option>
+                          <option>PGPJSD</option>
+                          <option>Ilmu Keolahragaan</option>
+                          <option>Pendidikan Kepelatihan Olahraga</option>
+                          <option>Kesehatan Masyarakat</option>
+                          <option>Pendidikan Ekonomi - Pendidikan Akuntansi</option>
+                          <option>Pendidikan Ekonomi - Pendidikan Koperasi</option>
+                          <option>Pendidikan Ekonomi - Pendidikan Administrasi Pekantoran</option>
+                          <option>Akuntansi</option>
+                          <option>Manajemen</option>
+                          <option>Ekonomi Pembangunan</option>
+                          <option>Ilmu Hukum</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="jenis_kelamin">Jenis Kelamin</label>
+                        <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">  
+                          <option selected disabled>Pilih Jenis Kelamin</option>
+                          <option>Laki-Laki</option>
+                          <option>Perempuan</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="tahun_angkatan">Tahun Angkatan</label>
+                        <select class="form-control" id="tahun_angkatan" name="tahun_angkatan">   <!-- <select> disini suatu perintah digunakan untuk memilih inputan -->
+                          <option selected disabled>Pilih Tahun Angkatan</option>
+                          <option>2014</option>
+                          <option>2015</option>
+                          <option>2016</option>
+                          <option>2017</option>
+                          <option>2018</option>
+                          <option>2019</option>
+                          <option>2020</option>
+                          <option>2021</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="ket_jalur_masuk">Jalur Masuk</label>
+                        <select class="form-control" id="ket_jalur_masuk" name="ket_jalur_masuk">   <!-- <select> disini suatu perintah digunakan untuk memilih inputan -->
+                          <option selected disabled>Pilih Jalur Masuk</option>
+                          <option>SNMPTN</option>
+                          <option>SBMPTN</option>
+                          <option>SM</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="ips1">IP Semester 1</label>
+                        <input type="text" class="form-control" id="ips1" name="ips1" placeholder="IP Semester 1">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="ips2">IP Semester 2</label>
+                        <input type="text" class="form-control" id="ips2" name="ips2" placeholder="IP Semester 2">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="ips3">IP Semester 3</label>
+                        <input type="text" class="form-control" id="ips3" name="ips3" placeholder="IP emester 3">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="ips4">IP Semester 4</label>
+                        <input type="text" class="form-control" id="ips4" name="ips4" placeholder="IP Semester 4">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="ips5">IP Semester 5</label>
+                        <input type="text" class="form-control" id="ips5" name="ips5" placeholder="IP Semester 5">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="ips6">IP Semester 6</label>
+                        <input type="text" class="form-control" id="ips6" name="ips6" placeholder="IP Semester 6">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="ipk">IPK</label>
+                        <input type="text" class="form-control" id="ipk" name="ipk" placeholder="IPK">
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="sumber_biaya">Sumber Biaya</label>
+                        <select class="form-control" id="sumber_biaya" name="sumber_biaya">   <!-- <select> disini suatu perintah digunakan untuk memilih inputan -->
+                          <option>Bidikmisi</option>
+                          <option>Reguler</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class="form-group">
+                        <label for="sekolah_asal">Sekolah Asal</label>
+                        <select class="form-control" id="sekolah_asal" name="sekolah_asal">   <!-- <select> disini suatu perintah digunakan untuk memilih inputan -->
+                          <option selected disabled>Pilih Sekolah Asal</option>
+                          <option>SMA</option>
+                          <option>SMK</option>
+                          <option>SM</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-4">
+                      <div class="form-group">
+                        <input type="hidden" class="form-control" id="id_mahasiswa_aktif" name="id_mahasiswa_aktif" placeholder="id_mahasiswa_aktif">
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-default float-right">
+                      <a href="/mahasiswaaktif">Cancel</a>
+                    </button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                  </div>
+                  <!-- /.card-body -->
+
+
+
+                </form>
+              </div>
+              </div>
+              <!-- /.card -->
+            
+          </div>
+        </div>
+
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  
+
+  {% include 'footer.html' %}

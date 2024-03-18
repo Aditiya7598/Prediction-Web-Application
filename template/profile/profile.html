@@ -1,0 +1,271 @@
+{% include 'header.html' %}
+                        
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+            <li class="breadcrumb-item active">Profile User</li>
+          </ol>
+        </div>
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <!-- jquery validation -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="text-center">Profile User <small>({{account['username']}})</small></h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form id="quickForm">
+              <div class="card-body">
+              <table class="table-responsive p-2 table table-hover">
+
+                <thead>
+                  <tr>
+                    <td>Nama</td>
+                    <td>{{ account['nama'] }}</td>
+                  </tr>
+                  <tr>
+                    <td>NIP</td>
+                    <td>{{ account['nip'] }}</td>
+                  </tr>
+                  <tr>
+                    <td>Jenis Kelamin</td>
+                    <td>{{ account['jenis_kelamin'] }}</td>
+                  </tr>
+                  <tr>
+                    <td>Fakultas</td>
+                    <td>{{ account['fakultas'] }}</td>
+                  </tr>
+                  <tr>
+                    <td>Program Studi</td>
+                    <td>{{ account['program_studi'] }}</td>
+                  </tr>
+                  <tr>
+                    <td>Username</td>
+                    <td>{{ account['username'] }}</td>
+                  </tr>
+                  <tr>
+                    <td>Password</td>
+                    <td>{{ account['password'] }}</td>
+                  </tr>
+                  <tr>
+                    <td>Level</td>
+                    <td>{{ account['level'] }}</td>
+                  </tr>
+                  
+                </thead>
+
+              </table>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <td><a href="/update_profile/{{account['id_users']}}" class="btn btn-info btn-primary" data-toggle="modal" data-target="#modaledit{{account['id_users']}}" role="button">
+                  <i class="fas fa-pencil-alt"></i>Edit</a>
+                </td>	
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
+          </div>
+        <!--/.col (left) -->
+        <!-- right column -->
+        <div class="col-md-6">
+
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+
+
+  <!--EDIT--EDIT--EDIT--#-->
+
+  <div id="modaledit{{account['id_users']}}" class="modal fade" role="dialog">
+
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Edit Data</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <div class="modal-body">
+            <form action="{{ url_for('update_profile') }}" method="POST">
+              <div class="row">
+
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Nama:</label>
+                    <input type="hidden"  name="id_users" value="{{account['id_users']}}">
+                    <input type="text" class="form-control" name="nama" value="{{account['nama']}}">
+                  </div>
+                </div> 
+
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>NIP:</label>
+                    <input type="text" class="form-control" name="nip" value="{{account['nip']}}">
+                  </div>
+                </div> 
+
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Jenis Kelamin:</label>
+                    <select class="form-control" name="jenis_kelamin" value="{{account['jenis_kelamin']}}">  
+                      <option selected disabled, Selected value="{{account['jenis_kelamin']}}">{{ account['jenis_kelamin'] }}</option>
+                      <option>Laki - Laki</option>
+                      <option>Perempuan</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Fakultas:</label>
+                    <select class="form-control" name="fakultas" value="{{account['fakultas']}}">  
+                      <option selected disabled, Selected value="{{account['fakultas']}}">{{ account['fakultas'] }}</option>
+                      <option>Fakultas Bahasa dan Seni (FBS)</option>
+                      <option>Fakultas Ekonomi (FE)</option>
+                      <option>Fakultas Hukum (FH)</option>
+                      <option>Fakultas Ilmu Keolahragaan (FIK)</option>
+                      <option>Fakultas Ilmu Pendidikan (FIP)</option>
+                      <option>Fakultas Ilmu Sosial (FIS)</option>
+                      <option>Fakultas Teknik (FT)</option>
+                      <option>Fakultas Matematika dan IPA (FMIPA)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-4">
+                <div class="form-group">
+                  <label>Program Studi:</label>
+                  <select class="form-control" name="program_studi" value="{{account['program_studi']}}">  
+                    <option selected disabled, Selected value="{{account['program_studi']}}">{{ account['program_studi'] }}</option>
+                    <option>Teknologi Pendidikan</option>
+                    <option>Pendidikan Luar Sekolah</option>
+                    <option>Bimbingan dan Konseling</option>
+                    <option>Pendidikan Guru Sekolah Dasar</option>
+                    <option>Pendidikan Guru PAUD</option>
+                    <option>Psikologi</option>
+                    <option>Pendidikan Bahasa dan Sastra Indonesia</option>
+                    <option>Sastra Indonesia</option>
+                    <option>Pendidikan Bahasa Inggris</option>
+                    <option>Sastra Inggris</option>
+                    <option>Pendidikan Bahasa Perancis</option>
+                    <option>Pendidikan Bahasa Jepang</option>
+                    <option>Pendidikan Bahasa Arab</option>
+                    <option>Pendidikan Bahasa Mandarin</option>
+                    <option>sastra Perancis</option>
+                    <option>Pendidikan Seni Rupa</option>                        
+                    <option>Seni Rupa</option>
+                    <option>Desain Komunikasi Visual (DKV)</option>
+                    <option>Sendratasik - Pendidikan Seni Tari</option>
+                    <option>Sendratasik - Pendidikan Seni Musik</option>
+                    <option>Pendidikan Bahasa dan Sastra Jawa</option>
+                    <option>Sastra Jawa</option>
+                    <option>Pendidikan Sejarah</option>                        
+                    <option>Ilmu Sejarah</option>
+                    <option>Pendidikan Geografi</option>
+                    <option>Geografi</option>
+                    <option>Pendidikan Pancasila dan Kewarganegaraan</option>
+                    <option>Ilmu Politik</option>
+                    <option>Pendidikan Sosiologi dan Antropologi</option>
+                    <option>Pendidikan Ilmu Pengetahuan Sosial</option>
+                    <option>Pendidikan Matematika</option>                        
+                    <option>Matematika</option>
+                    <option>Pendidikan Fisika</option>
+                    <option>Fisika</option>
+                    <option>Pendidikan Kimia</option>
+                    <option>Kimia</option>
+                    <option>Pendidikan Biologi</option>
+                    <option>Biologi</option>
+                    <option>Pendidikan Ilmu Pengetahuan Alam</option>
+                    <option>Teknik Informatika</option>
+                    <option>Pendidikan Teknik Bangunan</option>
+                    <option>Teknik Sipil</option>
+                    <option>Teknik Arsitektur</option>
+                    <option>Pendidikan Teknik Mesin</option>
+                    <option>Pendidikan Teknik Otomotif</option>
+                    <option>Teknik Mesin</option>
+                    <option>Pendidikan Teknik Elektro</option>
+                    <option>Pendidikan Teknik Informatika dan Komputer</option>
+                    <option>Pendidikan Kesejahteraan Keluarga</option>
+                    <option>Pendidikan Tata Kecantikan</option>
+                    <option>Pendidikan Tata Busana</option>
+                    <option>Pendidikan Tata Boga</option>
+                    <option>Teknik Kimia</option>
+                    <option>Pendidikan Jasmani, Kesehatan dan Rekreasi</option>
+                    <option>PGPJSD</option>
+                    <option>Ilmu Keolahragaan</option>
+                    <option>Pendidikan Kepelatihan Olahraga</option>
+                    <option>Kesehatan Masyarakat</option>
+                    <option>Pendidikan Ekonomi - Pendidikan Akuntansi</option>
+                    <option>Pendidikan Ekonomi - Pendidikan Koperasi</option>
+                    <option>Pendidikan Ekonomi - Pendidikan Administrasi Pekantoran</option>
+                    <option>Akuntansi</option>
+                    <option>Manajemen</option>
+                    <option>Ekonomi Pembangunan</option>
+                    <option>Ilmu Hukum</option>
+                  </select>
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Username:</label>
+                    <input type="text" class="form-control" name="username" value="{{account['username']}}">
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>Password:</label>
+                    <input type="text" class="form-control" name="password" value="{{account['password']}}">
+                  </div>
+                </div> 
+
+                <div class="col-4">
+                  <div class="form-group">
+                    <input type="hidden"  name="level" value="{{account['level']}}">
+                  </div>
+                </div>
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-default float-right">
+                    <a href="/profile">Cancel</a>
+                  </button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+          
+      </div>
+    </div>
+  </div>
+
+<!-- /.content -->
+</div>
+
+
+
+{% include 'footer.html' %}

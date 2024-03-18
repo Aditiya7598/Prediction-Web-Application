@@ -1,0 +1,175 @@
+{% include 'header.html' %}
+       
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+              <li class="breadcrumb-item active">Algoritma Prediksi</li>
+            </ol>
+          </div>
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+        <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+
+      <!-- general form elements disabled -->
+      <div class="card card-warning">
+        <div class="card-header">
+          <h3 class="text-center"> Prediksi Algoritma Multi Linear Regression dan Artificial Neural Network</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <form action="{{url_for('predict')}}" method="POST">
+            <div class="row">
+
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="ips1">IP Semester 1</label>
+                  <input type="text" class="form-control" id="ips1" name="ips1" placeholder="IP Semester 1">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="ips2">IP Semester 2</label>
+                  <input type="text" class="form-control" id="ips2" name="ips2" placeholder="IP Semester 2">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="ips3">IP Semester 3</label>
+                  <input type="text" class="form-control" id="ips3" name="ips3" placeholder="IP emester 3">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="ips4">IP Semester 4</label>
+                  <input type="text" class="form-control" id="ips4" name="ips4" placeholder="IP Semester 4">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="ips5">IP Semester 5</label>
+                  <input type="text" class="form-control" id="ips5" name="ips5" placeholder="IP Semester 5">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="ips6">IP Semester 6</label>
+                  <input type="text" class="form-control" id="ips6" name="ips6" placeholder="IP Semester 6">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="ipk">IPK</label>
+                  <input type="text" class="form-control" id="ipk" name="ipk" placeholder="IPK">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="sumber_biaya">Sumber Biaya</label>
+                  <select class="form-control" id="sumber_biaya" name="sumber_biaya">   <!-- <select> disini suatu perintah digunakan untuk memilih inputan -->
+                    <option selected disabled>Pilih Sumber Biaya</option>
+                    <option value="0">Bidikmisi</option>
+                    <option value="1">Reguler</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="jenis_kelamin">Jenis Kelamin</label>
+                  <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+                    <option selected disabled>Pilih Jenis Kelamin</option>  
+                    <option value="0">Laki-Laki</option>
+                    <option value="1">Perempuan</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="ket_jalur_masuk">Jalur Masuk</label>
+                  <select class="form-control" id="ket_jalur_masuk" name="ket_jalur_masuk">   <!-- <select> disini suatu perintah digunakan untuk memilih inputan -->
+                    <option selected disabled>Pilih Jalur Masuk</option>
+                    <option value="0">SNMPTN</option>
+                    <option value="1">SBMPTN</option>
+                    <option value="2">SM</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="sekolah_asal">Sekolah Asal</label>
+                  <select class="form-control" id="sekolah_asal" name="sekolah_asal">   <!-- <select> disini suatu perintah digunakan untuk memilih inputan -->
+                    <option selected disabled>Pilih Sekolah Asal</option>
+                    <option value="0">SMA</option>
+                    <option value="1">SMK</option>
+                    <option value="2">MA</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <input type="hidden" class="form-control" id="id" name="id" placeholder="id">
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-default float-right">
+                <a href="/algoritmaMLR">Cancel</a>
+              </button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+          
+            <!-- <div class="card-body">
+              <h1>Hasil Prediksi MLR :</h1>
+               <p class="card text"><h3> "{{prediction_text_mlr}}"</h3></p>
+              <h1>Dengan Lama Studi :</h1>
+              <p class="card text"><h3> "{{prediction_mlr}} Bulan"</h3></p>
+
+              <h1>Hasil Prediksi ANN :</h1>
+               <p class="card text"><h3> "{{prediction_text_ann}}"</h3></p>
+              <h1>Dengan Lama Studi :</h1>
+              <p class="card text"><h3> "{{prediction_ann}} Bulan"</h3></p>
+            </div>-->
+
+
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+          </form>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    
+
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+
+
+
+
+
+
+</div>
+<!-- /.content-wrapper -->
+
+
+
+  {% include 'footer.html' %}

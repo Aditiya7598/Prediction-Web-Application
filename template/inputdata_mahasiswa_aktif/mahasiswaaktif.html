@@ -1,0 +1,170 @@
+{% include 'header.html' %}
+    
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+              <li class="breadcrumb-item active">Data Mahasiswa Aktif</li>
+            </ol>
+          </div>
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content-header -->
+
+    <!-- Main content (isi content) -->
+    <section class="content">
+      <div class="container-fluid">
+        
+        <!-- isi -->
+        <div class="row">
+          <div class="col-md-12">     <!-- untuk melebarkan tampilan tabel -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Table Data Mahasiswa Aktif</h3>
+                <div class="card-tools">
+                  <div class="btn-group btn-group-toggle" data-toggle="button" >
+                    <td>
+                      <td><a href="/forminputdataaktif" class="btn btn-primary btn-sm" data-toggle="" data-target="" role="button">
+                        <i class="fas fa-pencil-alt"></i> Tambah Data</a>
+                      </td>
+                      <td><a href="" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalaktif" role="button">
+                        <i class="fas fa-upload "></i> Import Data</a>
+                      </td>
+                      <td><a action="/resetdataaktif" method="GET" href="/resetdataaktif" class="btn btn-danger btn-sm" onclick=" confirm('Are You Sure For Reset Data?')" role="button">
+                        <i class="fas fa-trash"></i> Reset Data</a>
+                      </td>
+                    </td>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <!-- Form untuk import file data alumni mahasiswa-->
+              <div id="modalaktif" class="modal fade" role="dialog">
+  
+                <div class="modal-dialog">
+                   <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title"><center>Import Data Mahasiswa Aktif<center></h1>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body">
+                         <form action="{{ url_for('uploadFiles_aktif') }}"  method="POST" enctype="multipart/form-data">
+                            <p><input type="file" name="file"></p>
+                            <td>
+                              <button type="submit" class="btn btn-block bg-gradient-primary btn-sm" value="Submit">Submit</button>
+                            </td>
+                         </form>
+                         <div class="modal-body">
+                          <h6 align="left">ketentuan:</h6>
+                          <p align="justify">1. File Harus Berekstensi CSV</p>
+                          <p align="justify">2. File Harus berisi data yang terdiri dari beberapa atribut yaitu : id_mahasiswa_aktif, fakultas, program_studi, nim, nama, tahun_angkatan, jenis_kelamin, ips1, ips2, ips3, ips4, ips5, ips6, ipk, sumber_biaya, ket_jalur_masuk, sekolah_asal</p>
+                         </div>
+                      </div>
+                      
+                   </div>
+                </div>
+              </div>
+
+              
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table-responsive p-0 table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Fakultas</th>
+                    <th>Program Studi</th>
+                    <th>NIM</th>
+                    <th>Nama</th>
+                    <th>Tahun Angkatan</th>
+                    <th>Jenis Kelamin</th>
+                    <th>IP Semester 1</th>
+                    <th>IP Semester 2</th>
+                    <th>IP Semester 3</th>
+                    <th>IP Semester 4</th>
+                    <th>IP Semester 5</th>
+                    <th>IP Semester 6</th>
+                    <th>IPK</th>
+                    <th>Sumber biaya</th>
+                    <th>Jalur Masuk</th>
+                    <th>Sekolah asal</th>
+                    <th>AKSI</th>
+                    <th>AKSI</th>
+                  </tr>
+                  </thead>
+
+                  <tbody>
+                    {% for row in data %} <!-- perulangan,menampilkan data, admin.py(19,21) -->
+                    <tr>
+                      <td>{{ loop.index }}</td>
+                      <td>{{ row.1 }}</td>
+                      <td>{{ row.2 }}</td>
+                      <td>{{ row.3 }}</td>
+                      <td>{{ row.4 }}</td>
+                      <td>{{ row.5 }}</td>
+                      <td>{{ row.6 }}</td>
+                      <td>{{ row.7 }}</td>
+                      <td>{{ row.8 }}</td>
+                      <td>{{ row.9 }}</td>
+                      <td>{{ row.10 }}</td>
+                      <td>{{ row.11 }}</td>
+                      <td>{{ row.12 }}</td>
+                      <td>{{ row.13 }}</td>
+                      <td>{{ row.14 }}</td>
+                      <td>{{ row.15 }}</td>
+                      <td>{{ row.16 }}</td>
+
+                      <td><a href="/editaktif/{{row.0}}" class="btn btn-warning"  role="button">Edit</a>
+                      <td><a href="/delete2/{{row.0}}" class="btn btn-danger" onclick=" confirm('Are You Sure For Delete?')" role="button">Hapus</a></td>
+                    </tr>
+                    
+                    {% endfor %}
+                  </tbody>
+
+                  <tfoot>
+                  <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Fakultas</th>
+                    <th>Program Studi</th>
+                    <th>NIM</th>
+                    <th>Nama</th>
+                    <th>Tahun Angkatan</th>
+                    <th>Jenis Kelamin</th>
+                    <th>IP Semester 1</th>
+                    <th>IP Semester 2</th>
+                    <th>IP Semester 3</th>
+                    <th>IP Semester 4</th>
+                    <th>IP Semester 5</th>
+                    <th>IP Semester 6</th>
+                    <th>IPK</th>
+                    <th>Sumber biaya</th>
+                    <th>Jalur Masuk</th>
+                    <th>Sekolah asal</th>
+                    <th>AKSI</th>
+                    <th>AKSI</th>
+                  </tr>
+                  
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  
+
+  {% include 'footer.html' %}

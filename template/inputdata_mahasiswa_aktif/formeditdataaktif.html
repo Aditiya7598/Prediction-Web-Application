@@ -1,0 +1,288 @@
+{% include 'header.html' %}
+       
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/alumnimahasiswa">Data Mahasiswa Aktif</a></li>
+              <li class="breadcrumb-item active">Edit Data Mahasiswa aktif</li>
+            </ol>
+          </div>
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content (isi content) -->
+    <section class="content">
+      <div class="container-fluid">
+        
+        <!-- isi -->
+        <div class="row">
+          <div class="col-md-12"> <!-- untuk melebarkan tampilan tabel -->
+        
+            <!-- general form elements -->
+              <div class="modal-content">
+                <div class="modal-header">
+                   <h4 class="modal-title">Edit Data</h4>
+                </div>
+                <div class="modal-body">
+                <!-- /.card-header -->
+                <!-- form start -->
+                <div class="card-body">
+                  <form action="/editaktif/{{row.0}}" method="POST">
+                    <div class="row">
+                      
+                      <div class="col-4">
+                        <div class="form-group">
+                           <label>Fakultas:</label>
+                           <input type="hidden"  name="id_mahasiswa_alumni" value="{{row.0}}">
+                           <select class="form-control" name="fakultas" value="{{row.1}}">  
+                            <option selected disabled, Selected value="{{row.1}}">{{row.1}}</option>
+                            <option>FBS </option>
+                            <option>FE</option>
+                            <option>FH</option>
+                            <option>FIK</option>
+                            <option>FIP</option>
+                            <option>FIS</option>
+                            <option>FT</option>
+                            <option>FMIPA</option>
+                          </select>
+                        </div>
+                      </div>
+
+
+                      <div class="col-4">
+                       <div class="form-group">
+                        <label>Program Studi:</label>
+                        <select class="form-control" name="program_studi" value="{{row.2}}">  
+                          <option selected disabled, Selected value="{{row.2}}">{{row.2}}</option>
+                          <option>Teknologi Pendidikan</option>
+                          <option>Pendidikan Luar Sekolah</option>
+                          <option>Bimbingan dan Konseling</option>
+                          <option>Pendidikan Guru Sekolah Dasar</option>
+                          <option>Pendidikan Guru PAUD</option>
+                          <option>Psikologi</option>
+                          <option>Pendidikan Bahasa dan Sastra Indonesia</option>
+                          <option>Sastra Indonesia</option>
+                          <option>Pendidikan Bahasa Inggris</option>
+                          <option>Sastra Inggris</option>
+                          <option>Pendidikan Bahasa Perancis</option>
+                          <option>Pendidikan Bahasa Jepang</option>
+                          <option>Pendidikan Bahasa Arab</option>
+                          <option>Pendidikan Bahasa Mandarin</option>
+                          <option>sastra Perancis</option>
+                          <option>Pendidikan Seni Rupa</option>                        
+                          <option>Seni Rupa</option>
+                          <option>Desain Komunikasi Visual (DKV)</option>
+                          <option>Sendratasik - Pendidikan Seni Tari</option>
+                          <option>Sendratasik - Pendidikan Seni Musik</option>
+                          <option>Pendidikan Bahasa dan Sastra Jawa</option>
+                          <option>Sastra Jawa</option>
+                          <option>Pendidikan Sejarah</option>                        
+                          <option>Ilmu Sejarah</option>
+                          <option>Pendidikan Geografi</option>
+                          <option>Geografi</option>
+                          <option>Pendidikan Pancasila dan Kewarganegaraan</option>
+                          <option>Ilmu Politik</option>
+                          <option>Pendidikan Sosiologi dan Antropologi</option>
+                          <option>Pendidikan Ilmu Pengetahuan Sosial</option>
+                          <option>Pendidikan Matematika</option>                        
+                          <option>Matematika</option>
+                          <option>Pendidikan Fisika</option>
+                          <option>Fisika</option>
+                          <option>Pendidikan Kimia</option>
+                          <option>Kimia</option>
+                          <option>Pendidikan Biologi</option>
+                          <option>Biologi</option>
+                          <option>Pendidikan Ilmu Pengetahuan Alam</option>
+                          <option>Teknik Informatika</option>
+                          <option>Pendidikan Teknik Bangunan</option>
+                          <option>Teknik Sipil</option>
+                          <option>Teknik Arsitektur</option>
+                          <option>Pendidikan Teknik Mesin</option>
+                          <option>Pendidikan Teknik Otomotif</option>
+                          <option>Teknik Mesin</option>
+                          <option>Pendidikan Teknik Elektro</option>
+                          <option>Pendidikan Teknik Informatika dan Komputer</option>
+                          <option>Pendidikan Kesejahteraan Keluarga</option>
+                          <option>Pendidikan Tata Kecantikan</option>
+                          <option>Pendidikan Tata Busana</option>
+                          <option>Pendidikan Tata Boga</option>
+                          <option>Teknik Kimia</option>
+                          <option>Pendidikan Jasmani, Kesehatan dan Rekreasi</option>
+                          <option>PGPJSD</option>
+                          <option>Ilmu Keolahragaan</option>
+                          <option>Pendidikan Kepelatihan Olahraga</option>
+                          <option>Kesehatan Masyarakat</option>
+                          <option>Pendidikan Ekonomi - Pendidikan Akuntansi</option>
+                          <option>Pendidikan Ekonomi - Pendidikan Koperasi</option>
+                          <option>Pendidikan Ekonomi - Pendidikan Administrasi Pekantoran</option>
+                          <option>Akuntansi</option>
+                          <option>Manajemen</option>
+                          <option>Ekonomi Pembangunan</option>
+                          <option>Ilmu Hukum</option>
+                        </select>
+                        </div>
+                      </div>
+                        
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>NIM:</label>
+                          <input type="text" class="form-control" name="nim" value="{{row.3}}">
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>Nama:</label>
+                          <input type="text" class="form-control" name="nama" value="{{row.4}}">
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>Tahun Angkatan:</label>
+                          <select class="form-control" name="tahun_angkatan" value="{{row.5}}">  
+                            <option selected disabled, Selected value="{{row.5}}">{{row.5}}</option>
+                            <option>2014</option>
+                            <option>2015</option>
+                            <option>2016</option>
+                            <option>2017</option>
+                            <option>2018</option>
+                            <option>2019</option>
+                            <option>2020</option>
+                            <option>2021</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>Jenis Kelamin:</label>
+                          <select class="form-control" name="jenis_kelamin" value="{{row.6}}">  
+                            <option selected disabled, Selected value="{{row.6}}">{{row.6}}</option>
+                            <option>Laki-Laki</option>
+                            <option>Perempuan</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>IP Semester 1:</label>
+                          <input type="text" class="form-control" name="ips1" value="{{row.7}}">
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>IP Semester 2:</label>
+                          <input type="text" class="form-control" name="ips2" value="{{row.8}}">
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>IP Semester 3:</label>
+                          <input type="text" class="form-control" name="ips3" value="{{row.9}}">
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>IP Semester 4:</label>
+                          <input type="text" class="form-control" name="ips4" value="{{row.10}}">
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>IP Semester 5:</label>
+                          <input type="text" class="form-control" name="ips5" value="{{row.11}}">
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                      <div class="form-group">
+                          <label>IP Semester 6:</label>
+                          <input type="text" class="form-control" name="ips6" value="{{row.12}}">
+                        </div>
+                      </div>
+                        
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>IPK:</label>
+                          <input type="text" class="form-control" name="ipk" value="{{row.13}}">
+                        </div>
+                      </div>
+                        
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>Sumber Biaya:</label>
+                          <select class="form-control" name="sumber_biaya" value="{{row.14}}">  
+                            <option selected disabled, Selected value="{{row.14}}">{{row.14}}</option>
+                            <option>Bidikmisi</option>
+                            <option>Reguler</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>Jalur Masuk:</label>
+                          <select class="form-control" name="ket_jalur_masuk" value="{{row.15}}">  
+                            <option selected disabled, Selected value="{{row.15}}">{{row.15}}</option>
+                            <option>SNMPTN</option>
+                            <option>SBMPTN</option>
+                            <option>SM</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label>Sekolah Asal:</label>
+                          <select class="form-control" name="sekolah_asal" value="{{row.16}}">  
+                            <option selected disabled, Selected value="{{row.16}}">{{row.16}}</option>
+                            <option>SMA</option>
+                            <option>SMK</option>
+                            <option>SM</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                      <div class="card-footer">
+                        <button class="btn btn-primary" type="submit">Update</button>
+                        <button type="submit" class="btn btn-default float-right">
+                          <a href="/mahasiswaaktif">Cancel</a>
+                        </button>
+                      </div>
+
+                    </div>
+                    <!-- /.card-body -->
+
+
+                  </div>
+                </div>
+              </div>
+              <!-- /.card -->
+            
+          </div>
+        </div>
+
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  
+
+  {% include 'footer.html' %}
+

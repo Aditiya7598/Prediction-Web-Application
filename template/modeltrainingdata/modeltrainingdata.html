@@ -1,0 +1,178 @@
+{% include 'header.html' %}
+    
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+              <li class="breadcrumb-item active">Training Data (Model)</li>
+            </ol>
+          </div>
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content-header -->
+
+    <!-- Main content (isi content) -->
+    <section class="content">
+      <div class="container-fluid">
+        
+
+      <!-- isi -->
+      <div class="row">
+        <div class="col-md-12">     <!-- untuk melebarkan tampilan tabel -->
+          <div class="card card-info">
+            <div class="card-header">
+              <h2 class="card-title">Import File Data Training</h2>                     
+            </div>                      
+
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <form action="{{ url_for('uploadFilesmodel') }}"  method="POST" enctype="multipart/form-data">
+                  <p><input type="file" name="file"></p>
+                  <td>
+                    <button type="submit" class="btn btn-block bg-gradient-primary btn-sm" value="Submit">Submit</button>
+                  </td>
+                </form>
+
+            </div>
+          </div>
+        </div>
+      </div>     
+
+
+      
+      
+
+
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-6">
+          <!-- general form elements -->
+          <div class="card card-success">
+            <div class="card-header">
+              <h2 class="card-title">Hasil Uji Model Training MLR</h2>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+
+              <div class="card-body">
+
+                <div class="form-group">
+                  <p>Jumlah Total Data : {{ jml_total_data }}</p>
+                </div>
+                <div class="form-group">
+                  <p>Jumlah Data Trining : {{ jml_data_Xtrain }} ( 80 % dari jumlah data )</p>
+                </div>
+                <div class="form-group">
+                  <p>Jumlah Data Testing : {{ jml_data_Xtest }} ( 20 % dari jumlah data )</p>
+                </div>
+
+                <div class="form-group">
+                  <p>MAPE : {{ MAPE_mlr }} %</p>
+                </div>
+                <div class="form-group">
+                  <p>MSE : {{ MSE_mlr }}</p>
+                </div>
+                <div class="form-group">
+                  <p>RMSE : {{ RMSE_mlr }}</p>
+                </div>
+
+                <!-- <div class="form-group">
+                  <p>MAE : {{ MAE_mlr }}</p>
+                </div>
+                <div class="form-group">
+                  <p>R2 : {{ R2_mlr }}</p>
+                </div>
+                <p>y_pred_mlr :{{ y_pred_mlr }}</p> -->
+
+              </div>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!--/.col (left) -->
+
+
+        <!-- right column -->
+        <div class="col-md-6">
+          <!-- Form Element sizes -->
+          <div class="card card-success">
+            <div class="card-header">
+              <h2 class="card-title">Hasil Uji Model Training ANN</h2>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+
+              <div class="form-group">
+                <p>Jumlah Total Data : {{ jml_total_data }}</p>
+              </div>
+              <div class="form-group">
+                <p>Jumlah Data Trining : {{ jml_data_Xtrain }} ( 80 % dari jumlah data )</p>
+              </div>
+              <div class="form-group">
+                <p>Jumlah Data Testing : {{ jml_data_Xtest }} ( 20 % dari jumlah data )</p>
+              </div>
+              <div class="form-group">
+                <p>MAPE : {{ MAPE_ann }} %</p>
+              </div>
+              <div class="form-group">
+                <p>MSE : {{ MSE_ann }}</p>
+              </div>
+              <div class="form-group">
+                <p>RMSE : {{ RMSE_ann }}</p>
+              </div>
+
+              <!-- <div class="form-group">
+                <p>MAE : {{ MAE_ann }}</p>
+              </div>
+              <div class="form-group">
+                <p>R2 : {{ R2_ann }}</p>
+              </div>
+              <p>y_pred_ann :{{ y_pred_ann }}</p>-->
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+
+          <!-- /.card -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+
+      <div class="card-footer">
+        <td><a href="/hasilmodel" class="btn btn-block bg-gradient-primary btn-sm" data-toggle="" data-target="" role="button">
+          <i class="nav-icon fas fa-book"></i> Table Perbandingan Hasil Model Dengan Data X_test (Testing) Sebesar 20%</a>
+        </td>
+      </div>
+
+
+      
+
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  
+
+
+  {% include 'footer.html' %}
+
+  
